@@ -17,6 +17,7 @@ function generatePassword(){
     alert("Please choose number between 8 and 128.")
   }
 console.log(chosenCriteria);
+
   function passwordCriteria(){
     // infinite while loop, best practice?
     let choosenCharacters = true;
@@ -27,10 +28,15 @@ console.log(chosenCriteria);
         alert("You can only write the characters 'U', 'N', 'S', or 'L'. Case and order does not matter.");
       } else {
         choosenCharacters = false;
-        return criteria.split("");
+        let criteriaToArray = criteria.split("")
+        let lowerCriteria = criteriaToArray.map((letter) => letter.toLowerCase());
+        let duplicatesRemoved = [... new Set(lowerCriteria)];
+        return duplicatesRemoved;
       }
     }
   }
+
+
 }
 
 // Get references to the #generate element
