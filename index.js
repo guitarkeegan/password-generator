@@ -4,6 +4,33 @@ function generatePassword(){
     const lowercaseLetters = 'abcdefghijklmnopqrstuvwxyz'.split('');
     const upperCaseLetters = lowercaseLetters.map((letter) => letter.toUpperCase());
     const specialChars = '!@#$%^&*()'.split('');
+
+    const passwordLength = prompt("How long would you like your password to be? Choose a number between 8 and 128.");
+  // empty string best practices?
+  if (passwordLength >= 8 && passwordLength <= 128){
+    var chosenCriteria = passwordCriteria();
+  } else if (passwordLength < 8){
+    alert("Number is too small. Please choose a number between 8 and 128.");
+  } else if (passwordLength > 128){
+    alert("Number is too large. Please choose number between 8 and 128.");
+  } else {
+    alert("Please choose number between 8 and 128.")
+  }
+console.log(chosenCriteria);
+  function passwordCriteria(){
+    // infinite while loop, best practice?
+    let choosenCharacters = true;
+    while (choosenCharacters){
+      const criteria = prompt("Choose the types of characters you would like your password to have.\n\nL: lowercase, U: for uppercase, N: for numbers, S: for special characters.\n\nFor example:\n Type LU if you would like your password to include lower and uppercase letters.\nType S if you would like the password to only include special characters.");
+      const validateCriteria = /[^luns]/ig.test(criteria);
+      if (validateCriteria === true){
+        alert("You can only write the characters 'U', 'N', 'S', or 'L'. Case and order does not matter.");
+      } else {
+        choosenCharacters = false;
+        return criteria.split("");
+      }
+    }
+  }
 }
 
 // Get references to the #generate element
