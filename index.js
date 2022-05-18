@@ -1,6 +1,8 @@
 // Assignment code here
 function generatePassword(){
 
+  let newPassword = [];
+
   const characterTypes = {
     n: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     l: "abcdefghijklmnopqrstuvwxyz".split(""),
@@ -38,10 +40,14 @@ console.log(chosenCriteria);
       }
     }
   }
-
+  // characterTypes.u.length is working
   // TODO: make a function that will determine how the constants will be iterated through
-  
+  let lengthCounter = passwordLength;
+  chosenCriteria.forEach((letter) => {
+    newPassword.push(characterTypes.letter[Math.floor((Math.random() * characterTypes.letter.length))]); // not working!!
 
+  })
+console.log(newPassword);
 
 }
 
