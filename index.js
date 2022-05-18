@@ -1,9 +1,12 @@
 // Assignment code here
 function generatePassword(){
-    const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-    const lowercaseLetters = 'abcdefghijklmnopqrstuvwxyz'.split('');
-    const upperCaseLetters = lowercaseLetters.map((letter) => letter.toUpperCase());
-    const specialChars = '!@#$%^&*()'.split('');
+
+  const characterTypes = {
+    n: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    l: "abcdefghijklmnopqrstuvwxyz".split(""),
+    u: "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
+    s: '!@#$%^&*()'.split('')
+  }
 
     const passwordLength = prompt("How long would you like your password to be? Choose a number between 8 and 128.");
   // empty string best practices?
@@ -35,6 +38,9 @@ console.log(chosenCriteria);
       }
     }
   }
+
+  // TODO: make a function that will determine how the constants will be iterated through
+  
 
 
 }
