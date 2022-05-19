@@ -43,15 +43,26 @@ console.log(chosenCriteria);
   // characterTypes.u.length is working
   // TODO: make a function that will determine how the constants will be iterated through
   let lengthCounter = passwordLength;
-  
+
   chosenCriteria.forEach((letterToFind) => {
     const characterLength = characterTypes[letterToFind].length;
-    console.log("characterLength is " + characterLength);
-    const randomNumber = Math.floor(Math.random() * characterLength);
-    console.log("randomNumber is " + randomNumber);
-    newPassword.push(characterTypes[letterToFind][randomNumber]);
+    const randomCharacterTypeIndex = Math.floor(Math.random() * characterLength);
+    newPassword.push(characterTypes[letterToFind][randomCharacterTypeIndex]);
     lengthCounter -= 1;
   });
+console.log("lengthCounter at " + lengthCounter);
+  for (let x=lengthCounter; x>0; x -= 1){
+    console.log("length of chosenCriteria is " + chosenCriteria.length)
+    const randomChosenCriteriaIndex = Math.floor(Math.random() * chosenCriteria.length);
+    console.log("randomChosenCriteriaIndex is " + randomChosenCriteriaIndex);
+    const characterToFindType = chosenCriteria[randomChosenCriteriaIndex];
+    console.log("characterToFindType is " + characterToFindType);
+    const characterLength = characterTypes[characterToFindType].length;
+    const randomCharacterTypeIndex = Math.floor(Math.random() * characterLength);
+    const chosenCharacter = characterTypes[characterToFindType][randomCharacterTypeIndex]
+    newPassword.push(chosenCharacter);
+  }
+
 console.log(newPassword);
 
 }
