@@ -63,7 +63,21 @@ console.log("lengthCounter at " + lengthCounter);
     newPassword.push(chosenCharacter);
   }
 
-console.log(newPassword);
+  const newUserPassword = jumbler()
+
+  function jumbler(){
+    let unJumbledPassword = newPassword;
+    let jumbledPassword = [];
+    for (let x=unJumbledPassword.length; x>0; x -= 1){
+      const randomPasswordIndex = Math.floor(Math.random() * unJumbledPassword.length);
+      jumbledPassword.push(unJumbledPassword.splice(randomPasswordIndex, 1));
+    }
+    return jumbledPassword.join("");
+  }
+
+  console.log(newPassword);
+  console.log(newUserPassword)
+  return newUserPassword;
 
 }
 
