@@ -10,8 +10,8 @@ function generatePassword(){
     s: '!@#$%^&*()'.split('')
   }
 
+  // is this a string?
     const passwordLength = prompt("How long would you like your password to be? Choose a number between 8 and 128.");
-  // empty string best practices?
   if (passwordLength >= 8 && passwordLength <= 128){
     var chosenCriteria = passwordCriteria();
   } else if (passwordLength < 8){
@@ -19,9 +19,8 @@ function generatePassword(){
   } else if (passwordLength > 128){
     alert("Number is too large. Please choose number between 8 and 128.");
   } else {
-    alert("Please choose number between 8 and 128.")
+    alert("Please choose number between 8 and 128.");
   }
-console.log(chosenCriteria);
 
   function passwordCriteria(){
     // infinite while loop, best practice?
@@ -29,19 +28,21 @@ console.log(chosenCriteria);
     while (choosenCharacters){
       const criteria = prompt("Choose the types of characters you would like your password to have.\n\nL: lowercase, U: for uppercase, N: for numbers, S: for special characters.\n\nFor example:\n Type LU if you would like your password to include lower and uppercase letters.\nType S if you would like the password to only include special characters.");
       const validateCriteria = /[^luns]/ig.test(criteria);
+      // better way to do this?
       if (validateCriteria === true){
         alert("You can only write the characters 'U', 'N', 'S', or 'L'. Case and order does not matter.");
       } else {
         choosenCharacters = false;
         let criteriaToArray = criteria.split("")
         let lowerCriteria = criteriaToArray.map((letter) => letter.toLowerCase());
+        //  ... is the spread operator. duplicates are not allowed in a Set
         let duplicatesRemoved = [... new Set(lowerCriteria)];
         return duplicatesRemoved;
+        // returns a set, object, array?
       }
     }
   }
-  // characterTypes.u.length is working
-  // TODO: make a function that will determine how the constants will be iterated through
+// from the user defined password length. Will now use as a counter for the function below.
   let lengthCounter = passwordLength;
 
   chosenCriteria.forEach((letterToFind) => {
@@ -50,7 +51,7 @@ console.log(chosenCriteria);
     newPassword.push(characterTypes[letterToFind][randomCharacterTypeIndex]);
     lengthCounter -= 1;
   });
-console.log("lengthCounter at " + lengthCounter);
+
   for (let x=lengthCounter; x>0; x -= 1){
     console.log("length of chosenCriteria is " + chosenCriteria.length)
     const randomChosenCriteriaIndex = Math.floor(Math.random() * chosenCriteria.length);
@@ -75,8 +76,6 @@ console.log("lengthCounter at " + lengthCounter);
     return jumbledPassword.join("");
   }
 
-  console.log(newPassword);
-  console.log(newUserPassword)
   return newUserPassword;
 
 }
