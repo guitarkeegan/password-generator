@@ -1,6 +1,6 @@
 # Front-end Password Generator
 
-A simple password generator app.
+[Password Generator](https://guitarkeegan.github.io/password-generator/)
 
 ## Description
 
