@@ -24,3 +24,7 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 ## Acknowledgments
 
 Test files and other considerations were provided by Andres Long.
+
+## Screenshot
+
+![Password Generator](./password-generator.gif)
