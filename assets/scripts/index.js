@@ -12,7 +12,6 @@ function generatePassword(){
 
   // prompt user and require a password length between 8 and 128 characters
   const passwordLength = parseInt(prompt("How long would you like your password to be? Choose a number between 8 and 128.")); 
-  console.log(passwordLength);
   if (passwordLength >= 8 && passwordLength <= 128){
     var chosenCriteria = passwordCriteria();
   } else if (passwordLength < 8){
@@ -29,12 +28,11 @@ function generatePassword(){
   function passwordCriteria(){
 
     let choosenCharacters = true;
-
+    // enter while loop until user selects the desired character types for the password
     while (choosenCharacters){
       const criteria = prompt("Choose the types of characters you would like your password to have.\n\nL: lowercase, U: for uppercase, N: for numbers, S: for special characters.\n\nFor example:\n Type LU if you would like your password to include lower and uppercase letters.\nType S if you would like the password to only include special characters.");
       const validateCriteria = /[^luns]/ig.test(criteria);
       if (criteria){
-        console.log("criteria not null");
         if (validateCriteria === true){
           alert("You can only write the characters 'U', 'N', 'S', or 'L'. Case and order does not matter.");
         } else {
@@ -49,16 +47,17 @@ function generatePassword(){
       }
     }
   }
-// from the user defined password length. Will now use as a counter for the function below.
-  let lengthCounter = passwordLength;
 
+  let lengthCounter = passwordLength;
+// get length of each selected character array from the characterTypes object and select one random
+// character from each array
   chosenCriteria.forEach((letterToFind) => {
     const characterLength = characterTypes[letterToFind].length;
     const randomCharacterTypeIndex = Math.floor(Math.random() * characterLength);
     newPassword.push(characterTypes[letterToFind][randomCharacterTypeIndex]);
     lengthCounter -= 1;
   });
-
+// for the remainder of the password, continue selecting random elements until the lengthCounter reaches 0.
   for (let x=lengthCounter; x>0; x -= 1){
     const randomChosenCriteriaIndex = Math.floor(Math.random() * chosenCriteria.length);
     const characterToFindType = chosenCriteria[randomChosenCriteriaIndex];
@@ -69,7 +68,9 @@ function generatePassword(){
   }
 
   const newUserPassword = jumbler()
-
+// at this point, newPassword fullfills the user criteria in length and characters specified, but is not
+// yet fully randomized. This function mixes the order of the character up one more time and returns the final 
+// password as a string.
   function jumbler(){
     let unJumbledPassword = newPassword;
     let jumbledPassword = [];
@@ -79,7 +80,7 @@ function generatePassword(){
     }
     return jumbledPassword.join("");
   }
-
+// the parent function finally returns here
   return newUserPassword;
 
 }
