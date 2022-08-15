@@ -4,7 +4,7 @@
 
 ## Description
 
-This application will prompt the user for a series of criteria and generate a password based on their responces.
+This application will prompt the user for a series of criteria and generate a password based on their responses.
 
 ## Authors
 
